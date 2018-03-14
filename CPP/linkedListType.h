@@ -80,5 +80,32 @@ public:
   //               deleteItem is deleted from the list, first points
   //               to the first node, last points to the last
   //               node of the updated list, and count is decremented 
-  //               by one.                                      
+  //               by one.  
+                                        
+  linkedListType();
+  //Default constructor.
+  //Initializes the list to an empty state.
+  //Postcondition: first = NULL; last = NULL;
+  //               count = 0.
+                                        
+  linkedListType(const linkedListType<Type>& otherList);
+  //Copy constructor.
+                                        
+  ~linkedListType();
+  //Destructor
+  //Delete all the nodes from the list.
+  //Postcondition: The list object is destroyed.
+                                        
+protected:
+  int count;                           //variable to store the number of
+                                       //elements in the list
+  nodeType<Type> *first;               //pointer to the first node of
+                                       //the list
+  nodeType<Type> *last;                //pointer to the last node of
+                                       //the list 
+private:
+  void copyList(const linkedListType<Type>& otherList);
+  //Function to make a copy of otherList.
+  //Postcondition: A copy of otherList  is created
+  //               and assigned to the list.                                      
 };
