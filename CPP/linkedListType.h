@@ -113,5 +113,69 @@ private:
   //               and assigned to the list.                                      
 };
 
+template<class Type>
+linkedListType<Type>::linkedListType()
+{
+  first = NULL;
+  last = NULL;
+  count = 0; 
+}
                                         
-#endif                                        
+template<class Type>
+void linkedListType<Type>::destroyList()
+{
+  nodeType<Type> *temp;                   //pointer to deallocate
+                                          //the memory occupied by
+                                          //the node
+  
+  while(first != NULL)                    //while there are nodes in the list
+  {
+    temp = first;                         //set temp to the current node
+    first = first->link;                  //advance first to the next node    
+    delete temp;                          //deallocate the memory occupied 
+                                          //by temp
+  }
+  
+  last = NULL;                            //initialize last to NULL; first has
+                                          //already been set to NULL by the
+                                          //while loop
+  count = 0;
+}
+                                        
+template<class Type>
+void linkedListType<Type>::initializeList()
+{
+  destroyList();                          //if the list has any nodes,
+                                          //delete them
+}  
+
+template<class Type>
+ostream& operator<<(ostream& osObject, cosnt linkeListType<Type>& list)
+{
+  nodeType<Type> *current;                //pointer to traverse the list
+  
+  current = list.first;                   //set current so that it points
+                                          //to the first node
+  
+  while(current != NULL)                  //while more data to output
+  {
+    osObject << current->info << " ";
+    current = current->link;
+  }
+  
+  return osObject;
+}
+                                        
+template<class Type>
+int linkedListType<Type>::length()
+{
+  return count;
+}
+                                        
+template<class Type>                                         
+template<class Type>                                         
+template<class Type>                                         
+                                        
+                                        
+                                        
+#endif
