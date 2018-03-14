@@ -23,6 +23,8 @@ public:
   //Function to initialize the list to an empty state.
   //Postcondition: first = NULL; last = NULL;
   //               count = 0.
+  
+  void print();                                      
                                         
   bool isEmptyList();
   //Function to determine whether the list is empty.
@@ -140,6 +142,31 @@ void linkedListType<Type>::destroyList()
                                           //already been set to NULL by the
                                           //while loop
   count = 0;
+}
+
+template <class Type>
+void linkedListType<Type>::print()
+{
+	nodeType<Type>* temp = first;
+
+	if (temp == NULL)
+	{
+		cout << "";
+	}
+
+	if (temp->link == NULL)
+	{
+		cout << temp->info;
+	}
+	else
+	{
+		while (temp != NULL)
+		{
+			cout << temp->info;
+			temp = temp->link;
+			cout << ", ";
+		}
+	}
 }
                                         
 template<class Type>
