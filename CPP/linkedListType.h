@@ -172,8 +172,43 @@ int linkedListType<Type>::length()
   return count;
 }
                                         
-template<class Type>                                         
-template<class Type>                                         
+template<class Type>
+Type linkedListType<Type>::front()
+{
+  assert(last != NULL);                   
+  return first->info;                       //return the info of the
+                                            //first node
+}
+
+template<class Type>
+Type linkedListType<Type>::back()
+{
+  assert(last != NULL);                   
+  return back->info;                       //return the info of the
+                                           //last node
+}
+                                        
+template<class Type>
+bool linkedListType<Type>::search(const Type& searchItem)
+{
+  modeType<Type> *current;                 //pointer to traverse the list
+  bool found;
+  
+  current = first;                        //set current to point to the 
+                                          //first node in the list
+  found = false;                          //set found to false
+  
+  while(current != NULL && !found)        //search the list
+  {
+    if(current->info == searchItem)       //the item is found
+       found = true;
+    else
+       current = current->link;           //make current point 
+                                          //to the next node
+  }
+  
+  return found;
+}  
 template<class Type>                                         
                                         
                                         
