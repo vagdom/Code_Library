@@ -208,9 +208,128 @@ bool linkedListType<Type>::search(const Type& searchItem)
   }
   
   return found;
+}
+                                        
+template<class Type>
+void linkedListType<Type>::insertFirst(const Type& newItem)
+{
+  nodeType<Type> *newNode;                 //pointer to create the new node
+  
+  newNode = new nodeType<Type>;            //create the new node
+  
+  assert(newNode != NULL);                 //if unable to allocate
+                                           //memory, terminate 
+                                           //the program
+  
+  newNode->info = newItem;                 //store newItem in the node
+  
+  newNode->link = first;                   //insert newnode before first
+  
+  first = newNode;                         //make first point to the actual 
+                                           //first node
+  
+  if(last == NULL)                         //if the list was empty, newNode is
+     last = newNode;                       //also the last node in the list
 }  
-template<class Type>                                         
                                         
+template<class Type>
+void linkedListType<Type>::insertLast(const Type& newItem)
+{
+  nodeType<Type> *newNode;                 //pointer to create the new node
+  
+  newNode = new nodeType<Type>;            //create the new node
+  
+  assert(newNode != NULL);                 //if unable to allocate
+                                           //memory, terminate 
+                                           //the program
+  
+  newNode->info = newItem;                 //store newItem in the node
+  
+  newNode->link = NULL;                    //insert newnode before first
+  
+  if(first == NULL)                        //if the list is empty, newNode is
+  {                                        //newNode is both the first and last one
+     first = newNode;
+     last = newNode;
+     count++;
+  } else
+  {
+    last->link = newNode;                  //insert newNode after last
+    last = newNode;                        //make last point to the actual last node
+    count++;
+  }  
+}
                                         
+template<class Type>
+void linkedListType<Type>::deleteNode(const Type& deleteItem)
+{
+  nodeType<Type> *current;                 //pointer to traverse the list
+  nodeType<Type> *trailCurrent;            //pointer just before current
+  bool found;
+  
+  if(first == NULL)                        //Case 1; list is empty
+     cerr << "Cannot delete from an empty lsit." << endl;
+  else
+  {
+    if(first->info == deleteNode)          //Case 2; the list is not empty.
+    {                                      //The node to be deleted is the first one 
+      current = first;
+      first = first->link;
+      count--;
+      if(first == NULL)                    //list has only one node
+         last = NULL;
+      delete current;      
+    }
+    else                                   //search the list for the node with the given info
+    {
+      found = false;
+      trailCurrent = first;                //set trailCurrento to point to the first node
+      current = first->link;               //set current to point to the second node
+      
+      while(current != NULL && !found)
+      {
+        if(current->info != deleItem)
+        {
+           trailCurrent = current;
+           current = currelnt->link; 
+        } else
+           found = true;        
+      }
+      
+      if(found)                             //Case 3; if found, delete the node 
+      {
+         trailCurrent->link = current->link;
+         count--;
+        
+         if(last == current)                //node to be deleted was the last node
+            last = trailCurrent; 
+         
+         delete current; 
+      } else
+         cout << "Item to be  deleted is not in the list." << endl;
+    }
+  }    
+}
                                         
+template<class Type>
+void linkedListType<Type>::~linkeListType()  //destructor
+{    
+  destroiList();
+}
+                                        
+template<class Type>
+void linkedListType<Type>::linkeListType(const linkedListType<Type>& otherList)  //copy constructor
+{  
+  first = NULL;
+  copyList(otherList);
+}
+                                        
+template<class Type>
+const linkedListType<Type>& linkeListType::operator=(const linkedListType<Type>& otherList)  //copy constructor
+{                                          
+  if(this != &otherList)                    //avoid self-copy
+    copyList(otherList);
+  
+  return *this;
+}
 #endif
