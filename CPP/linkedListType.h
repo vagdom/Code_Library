@@ -1,3 +1,6 @@
+#ifndef linkedListType_H
+#define linkedListType_H
+
 //Definition of the node
 
 template<class Type>
@@ -109,3 +112,6 @@ private:
   //Postcondition: A copy of otherList  is created
   //               and assigned to the list.                                      
 };
+
+                                        
+#endif                                        
