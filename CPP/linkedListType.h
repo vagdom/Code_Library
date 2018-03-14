@@ -50,5 +50,35 @@ public:
   //be empty.
   //Postcondition: If the list is empty, then the 
   //               program terminates, otherwise, the last
-  //               element of the list is returned.                                        
+  //               element of the list is returned.   
+                                        
+  bool search(const Type& searchItem);
+  //Function to determine whether searchItem is in
+  //the list.
+  //Postcondition: Returns true if searchItem is found 
+  //in the list; otherwise, returns false.  
+                                        
+  void insertFirst(const Type& newItem);
+  //Function to insert newItem in the beginning
+  //of the list.
+  //Postcondition: first points to the new list,
+  //               newItem is inserted at the beginning
+  //               of the list, last points to the last node, 
+  //               and count is incremented by 1.
+                                        
+  void insertLast(const Type& newItem);
+  //Function to insert newItem at the end
+  //of the list.
+  //Postcondition: first points to the new list,
+  //               newItem is inserted at the end
+  //               of the list, last points to the last node 
+  //               in the list, and count is incremented by 1.                                       
+  
+  void deleteNode(const Type& deleteItem);
+  //Function to delete deleteItem from the list.
+  //Postcondition: If found, the node containing
+  //               deleteItem is deleted from the list, first points
+  //               to the first node, last points to the last
+  //               node of the updated list, and count is decremented 
+  //               by one.                                      
 };
