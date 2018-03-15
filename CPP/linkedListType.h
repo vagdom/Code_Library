@@ -24,6 +24,8 @@ public:
   //Postcondition: first = NULL; last = NULL;
   //               count = 0.
   
+  //Funtion to print the list
+  //All items should be printed out to the screen 					
   void print();                                      
                                         
   bool isEmptyList();
