@@ -1,3 +1,6 @@
+#ifndef orderedLinkedListType_H
+#define orderedLinkedListType_H
+
 template<class Type> 
 class orderedLinkedListType: public linkedListType<Type>
 {
@@ -22,3 +25,30 @@ public:
   //               appropiate message is printed.
   void deleteNode(const Type& deleteItem);
 };
+
+template<class Type>
+bool orderedLinkedListType<Type>::search(const Type& searchItem)
+{
+  bool found;
+  nodeType<Type> *current;               //pointer to traverse the list
+  
+  found = false;                         //initialize found to false
+  current = first;                       //start the search at the first node
+  
+  while(current != NULL && !found)
+  {
+    if(current->info >= searchItem)
+      found = true;
+    else
+      current = current->link;
+  }
+  
+  if(found)
+    found = current (current->info == searchItem);    //test for equality
+  
+  return found;
+}
+
+
+
+#endid
